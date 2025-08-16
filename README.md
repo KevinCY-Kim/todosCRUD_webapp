@@ -53,7 +53,7 @@ UI는 **산토리니 풍 디자인**을 적용하여, 깔끔하고 시원한 느
 ![Todo Modify](./docs/screenshots/todomodify.png)
 
 ### MongoDBconnection
-![MongoDBconnection](./docs/screenshots/MongoDBconnction.png)
+![MongoDBconnection](./docs/screenshots/MongoDBconnection.png)
 
 ## 폴더 구조
 ```bash
