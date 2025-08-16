@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo Modify</title>
+<style>
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #f0f8ff;
+        margin: 0;
+        padding: 0;
+    }
+
+    h2 {
+        text-align: center;
+        color: #0077cc;
+        margin-top: 30px;
+    }
+
+    form {
+        width: 500px; /* 👈 통일된 가로폭 */
+        margin: 30px auto;
+        padding: 25px;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 12px; /* 행 간격 통일 */
+    }
+
+    td {
+        padding: 6px 10px;
+        vertical-align: middle;
+    }
+
+    input[type=text],
+    select {
+        width: 100%; /* 👈 form 폭에 맞춰서 100% */
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        font-size: 1rem;
+        box-sizing: border-box; /* 👈 padding 포함해서 정확히 맞춤 */
+    }
+
+    input[type=submit] {
+        width: 100%;
+        padding: 12px;
+        background-color: #00aaff;
+        border: none;
+        color: white;
+        font-weight: bold;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-top: 15px;
+        font-size: 1rem;
+        transition: background-color 0.3s;
+    }
+
+    input[type=submit]:hover {
+        background-color: #0077cc;
+    }
+
+    label {
+        font-weight: bold;
+        color: #0077cc;
+    }
+</style>
+</head>
+<body>
+<%- include('inc/Top.ejs') %>  
+
+<h2>Todo Modify</h2>
+<form action="/todo/modify" method="post">
+    <input type="hidden" name="_id" value="<%= todo._id %>" />
+    <table>
+        <tr>
+            <td>할일:</td>
+            <td><input type="text" name="title" value="<%= todo.title %>"/></td>
+        </tr>
+        <tr>
+            <td>확인:</td>
+            <td>
+                <select name="done">
+                    <% if(todo.done) { %>
+                        <option value="false">미완료</option>
+                        <option value="true" selected>완료</option>
+                    <% } else { %>
+                        <option value="false" selected>미완료</option>
+                        <option value="true">완료</option>
+                    <% } %>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="저장" /></td>
+        </tr>
+    </table>
+</form>
+
+<%- include('inc/Bottom.ejs') %>
+</body>
+</html>

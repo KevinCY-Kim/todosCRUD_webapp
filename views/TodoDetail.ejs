@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo Detail</title>
+<style>
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #f0f8ff;
+        margin: 0;
+        padding: 0;
+    }
+
+    h2 {
+        text-align: center;
+        color: #0077cc;
+        margin-top: 30px;
+    }
+
+    table {
+        width: 500px; /* 👈 todoInput과 통일 */
+        margin: 20px auto;
+        border-collapse: collapse;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        overflow: hidden;
+    }
+
+    th,
+    td {
+        padding: 12px 15px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+        font-size: 1rem;
+    }
+
+    th {
+        background-color: #00aaff;
+        color: white;
+        width: 150px; /* 👈 label 컬럼 조금 넓게 */
+        text-align: center;
+    }
+
+    tr:last-child td {
+        border-bottom: none;
+    }
+
+    p {
+        text-align: center;
+        margin-top: 25px;
+    }
+
+    a {
+        margin: 0 12px;
+        color: #0077cc;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    a:hover {
+        color: #00aaff;
+    }
+</style>
+</head>
+<body>
+<%- include('inc/Top.ejs') %>  
+
+<h2>Todo Detail</h2>
+<table>
+    <tr>
+        <th>ObjectId</th>
+        <td><%= todo._id %></td>
+    </tr>
+    <tr>
+        <th>Title</th>
+        <td><%= todo.title %></td>
+    </tr>
+    <tr>
+        <th>Done</th>
+        <td><%= todo.done %></td>
+    </tr>
+</table>
+
+<p>
+    <a href="/todo/list">목록</a> | 
+    <a href="/todo/modify?_id=<%= todo._id %>">수정</a> | 
+    <a href="/todo/delete?_id=<%= todo._id %>">삭제</a>
+</p>
+
+<%- include('inc/Bottom.ejs') %>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <style>
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f0f8ff;
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    text-align: center;
+    color: #0077cc;
+    margin-top: 30px;
+}
+
+table {
+    width: 50%; /* 👈 가로폭 절반으로 줄임 */
+    margin: 20px auto;
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #00aaff;
+    color: white;
+}
+
+tr:hover {
+    background-color: #e0f7ff;
+}
+
+a {
+    color: #0077cc;
+    text-decoration: none;
+}
+
+a.todo-title.isDone {
+    text-decoration: line-through;
+    color: #888;
+}
+
+.btn-add {
+    display: block;
+    width: 150px;
+    margin: 20px auto;
+    text-align: center;
+    padding: 10px;
+    background-color: #00aaff;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+.btn-add:hover {
+    background-color: #0077cc;
+}
+    </style>
+</head>
+<body>
+<%- include('inc/Top.ejs') %>  
+
+<h2>Todo List</h2>
+<table>
+    <tr>
+        <th>No</th>
+        <th>Done</th>
+        <th>Title</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <% todoList.forEach((item, i) => { %>
+    <tr>
+        <td><%= i %></td>
+        <td>
+            <input type="checkbox" 
+                   <%= item.done ? "checked" : "" %> 
+                   onchange="toggleDone(this, '<%=item._id%>')">
+        </td>
+        <td>
+            <a href="/todo/detail?_id=<%=item._id%>" 
+               class="todo-title <%= item.done ? 'isDone' : '' %>">
+               <%= item.title %>
+            </a>
+        </td>
+        <td><a href="/todo/modify?_id=<%=item._id %>">Edit</a></td>
+        <td><a href="/todo/delete?_id=<%=item._id %>">Delete</a></td>
+    </tr>
+    <% }) %>
+</table>
+
+<a href="/todo/input" class="btn-add">새 할일 추가</a>
+
+<script>
+function toggleDone(checkbox, id) {
+    const titleEl = checkbox.closest('tr').querySelector('.todo-title');
+    if(checkbox.checked) {
+        titleEl.classList.add('isDone');
+    } else {
+        titleEl.classList.remove('isDone');
+    }
+
+    // 서버에도 상태 반영 (옵션)
+    fetch(`/todo/toggle?_id=${id}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ done: checkbox.checked })
+    });
+}
+</script>
+
+<%- include('inc/Bottom.ejs') %>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TodoList CRUD 웹 애플리케이션</title>
+<style>
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #f0f8ff;
+        margin: 0;
+        padding: 0;
+    }
+
+    h2 {
+        text-align: center;
+        color: #0077cc;
+        margin-top: 40px;
+    }
+
+    hr {
+        border: 0;
+        height: 2px;
+        background: #00aaff;
+        width: 50%; /* 👈 가로폭 절반 */
+        margin: 30px auto;
+        border-radius: 1px;
+    }
+
+    main {
+        width: 50%; /* 👈 전체 내용 폭 절반 */
+        margin: 0 auto;
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+    <%- include('inc/Top.ejs') %>  
+    <main>
+        <hr>
+        <h2>Todos를 선택하세요.<div class=""></div></h2>
+        <hr>
+    </main>
+    <%- include('inc/Bottom.ejs') %>
+</body>
+</html>
