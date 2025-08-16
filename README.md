@@ -25,7 +25,7 @@ UI는 **산토리니 풍 디자인**을 적용하여, 깔끔하고 시원한 느
 
 ---
 
-## 🛠 기술 스택
+## 기술 스택
 
 - **Frontend:** EJS, CSS, JavaScript (Vanilla)
 - **Backend:** Node.js, Express
@@ -48,12 +48,13 @@ UI는 **산토리니 풍 디자인**을 적용하여, 깔끔하고 시원한 느
 ### Todo Input
 ![Todo Input](./docs/screenshots/todoinput.png)
 
-### Todo Detail / ✏️ Modify
+### Todo Detail / Modify
 ![Todo Detail](./docs/screenshots/tododetail.png)
 ![Todo Modify](./docs/screenshots/todomodify.png)
 
 
 ## 폴더 구조
+```bash
 todosCRUD_webapp/
 │  app.js
 │  index.js                 # Express 서버 진입점
