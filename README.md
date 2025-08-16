@@ -52,25 +52,28 @@ UI는 **산토리니 풍 디자인**을 적용하여, 깔끔하고 시원한 느
 ![Todo Detail](./docs/screenshots/tododetail.png)
 ![Todo Modify](./docs/screenshots/todomodify.png)
 
+### MongoDBconnection
+![MongoDBconnection](./docs/screenshots/MongoDBconnction.png)
 
 ## 폴더 구조
 ```bash
 todosCRUD_webapp/
 │  app.js
-│  index.js                 # Express 서버 진입점
+│  index.js           # Express 서버 진입점
 │  package-lock.json
 │  package.json
 │
 ├─docs
-│  └─screenshots	    # UI 스크린샷
+│  └─screenshots      # UI 스크린샷
 │          home.png
 │          tododetail.png
 │          todoinput.png
 │          todolist.png
 │          todomodify.png
+│          todomodify.png
 ├─public
-│      index.html          # 정적 파일 (CSS, JS)
-└─views                    # EJS 템플릿
+│      index.html     # 정적 파일 (CSS, JS)
+└─views               # EJS 템플릿
     │  home.ejs
     │  TodoDetail.ejs
     │  TodoInput.ejs
